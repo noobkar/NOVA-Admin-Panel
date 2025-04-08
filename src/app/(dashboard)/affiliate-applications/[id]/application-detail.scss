@@ -1,0 +1,396 @@
+@import '../../../../styles/scss/variables';
+@import '../../../../styles/scss/mixins';
+
+.application-detail-page {
+  // Common styles
+  .card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 24px;
+    overflow: hidden;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    
+    h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin: 0;
+      color: var(--text-primary);
+    }
+  }
+  
+  // Loading and error states
+  .loading-container,
+  .not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 0;
+    text-align: center;
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    
+    i {
+      font-size: 48px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+    
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      max-width: 500px;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 16px;
+      
+      @include sm {
+        flex-direction: column;
+      }
+    }
+  }
+  
+  // Application header with user info
+  .application-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    padding: 24px;
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    
+    @include md {
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+  
+  .applicant-profile {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    
+    @include sm {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+    }
+  }
+  
+  .applicant-avatar {
+    // The UserAvatar component handles most styling
+    // Just add any additional styles needed for this specific context
+    
+    // Add shadow to make it stand out on the page
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    
+    // Make it square with rounded corners instead of circle
+    border-radius: 16px !important;
+  }
+  
+  .applicant-info {
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+      color: var(--text-primary);
+    }
+    
+    .applicant-email {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+  }
+  
+  .application-status {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    
+    &.badge-pending {
+      background-color: rgba(255, 159, 67, 0.15);
+      color: var(--color-orange);
+    }
+    
+    &.badge-approved {
+      background-color: rgba(40, 199, 111, 0.15);
+      color: var(--color-green);
+    }
+    
+    &.badge-rejected {
+      background-color: rgba(234, 84, 85, 0.15);
+      color: var(--color-red);
+    }
+  }
+  
+  .application-actions {
+    display: flex;
+    gap: 12px;
+    
+    @include sm {
+      flex-direction: column;
+      width: 100%;
+    }
+    
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      
+      i {
+        margin-right: 8px;
+      }
+      
+      &.btn-secondary {
+        background-color: var(--bg-ternary);
+        color: var(--text-secondary);
+        
+        &:hover {
+          background-color: var(--bg-hover);
+          color: var(--text-primary);
+        }
+      }
+      
+      &.btn-success {
+        background-color: rgba(40, 199, 111, 0.15);
+        color: var(--color-green);
+        
+        &:hover {
+          background-color: var(--color-green);
+          color: white;
+        }
+      }
+      
+      &.btn-danger {
+        background-color: rgba(234, 84, 85, 0.15);
+        color: var(--color-red);
+        
+        &:hover {
+          background-color: var(--color-red);
+          color: white;
+        }
+      }
+      
+      &.btn-primary {
+        background-color: var(--color-primary);
+        color: white;
+        
+        &:hover {
+          background-color: var(--color-primary-dark);
+        }
+      }
+    }
+  }
+  
+  // Application details
+  .application-details {
+    padding: 24px;
+  }
+  
+  .detail-row {
+    display: flex;
+    margin-bottom: 32px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    @include md {
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+  
+  .detail-item {
+    flex: 1;
+    
+    &.full-width {
+      flex-basis: 100%;
+    }
+    
+    .label {
+      display: block;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      margin-bottom: 8px;
+    }
+    
+    .value {
+      font-size: 1rem;
+      font-weight: 500;
+      word-break: break-word;
+      
+      &.status-pending {
+        color: var(--color-orange);
+      }
+      
+      &.status-approved {
+        color: var(--color-green);
+      }
+      
+      &.status-rejected {
+        color: var(--color-red);
+      }
+    }
+  }
+  
+  // Rejection reason formatting
+  .rejection-reason {
+    padding: 16px;
+    background-color: rgba(234, 84, 85, 0.05);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--color-red);
+    color: var(--text-primary);
+    font-size: 0.938rem;
+    line-height: 1.6;
+  }
+  
+  // Rejection form
+  .rejection-form-card {
+    margin-bottom: 24px;
+  }
+  
+  .close-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--bg-ternary);
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background-color: var(--color-red);
+      color: white;
+    }
+  }
+  
+  .rejection-form {
+    padding: 24px;
+    
+    p {
+      margin-bottom: 16px;
+      color: var(--text-secondary);
+    }
+    
+    .form-group {
+      margin-bottom: 24px;
+      
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+      
+      textarea {
+        width: 100%;
+        min-height: 120px;
+        padding: 12px;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        background-color: var(--bg-input);
+        color: var(--text-primary);
+        font-size: 0.938rem;
+        resize: vertical;
+        transition: border-color 0.2s ease;
+        
+        &:focus {
+          outline: none;
+          border-color: var(--color-primary);
+        }
+      }
+    }
+    
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 16px;
+      
+      @include sm {
+        flex-direction: column-reverse;
+      }
+      
+      button {
+        padding: 10px 20px;
+        border-radius: var(--radius-md);
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: none;
+        
+        &.btn-secondary {
+          background-color: var(--bg-ternary);
+          color: var(--text-secondary);
+          
+          &:hover {
+            background-color: var(--bg-hover);
+            color: var(--text-primary);
+          }
+        }
+        
+        &.btn-danger {
+          background-color: var(--color-red);
+          color: white;
+          
+          &:hover {
+            background-color: darken(#ea5455, 10%);
+          }
+        }
+      }
+    }
+  }
+  
+  // Back button for mobile
+  .back-button {
+    display: none;
+    margin-top: 24px;
+    text-align: center;
+    
+    @include md {
+      display: block;
+    }
+    
+    button {
+      width: 100%;
+      max-width: 240px;
+    }
+  }
+}

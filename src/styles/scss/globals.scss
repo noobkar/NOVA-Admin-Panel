@@ -1,0 +1,254 @@
+@import 'variables';
+@import 'mixins';
+
+:root {
+  /* Dark mode colors */
+  --bg-primary: #{$bg-primary};
+  --bg-secondary: #{$bg-secondary};
+  --bg-ternary: #{$bg-ternary};
+  --card-bg: #{$card-bg};
+  --text-primary: #{$text-primary};
+  --text-secondary: #{$text-secondary};
+  --text-muted: #{$text-muted};
+  --border-color: #{$border-color};
+  
+  --color-purple: #{$color-purple};
+  --color-blue: #{$color-blue};
+  --color-green: #{$color-green};
+  --color-orange: #{$color-orange};
+  --color-red: #{$color-red};
+  
+  --shadow-soft: #{$shadow-soft};
+  --shadow-medium: #{$shadow-medium};
+  --shadow-hard: #{$shadow-hard};
+  
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  
+  --transition-fast: #{$transition-fast};
+  --transition-normal: #{$transition-normal};
+}
+
+/* Light mode styles */
+body.light-mode {
+  --bg-primary: #{$light-bg-primary};
+  --bg-secondary: #{$light-bg-secondary};
+  --bg-ternary: #{$light-bg-ternary};
+  --card-bg: #{$light-card-bg};
+  --text-primary: #{$light-text-primary};
+  --text-secondary: #{$light-text-secondary};
+  --text-muted: #{$light-text-muted};
+  --border-color: #{$light-border-color};
+  
+  --shadow-soft: #{$light-shadow-soft};
+  --shadow-medium: #{$light-shadow-medium};
+  --shadow-hard: #{$light-shadow-hard};
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Main Content */
+.main-content {
+  padding: 24px 0 48px;
+}
+
+/* Card */
+.card {
+  @include card;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-header h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+/* Button Styles */
+.btn {
+  @include button-base;
+  padding: 10px 16px;
+}
+
+.btn-primary {
+  @include button-primary;
+}
+
+.btn-secondary {
+  @include button-secondary;
+}
+
+.btn-outlined {
+  @include button-outlined;
+}
+
+.btn-sm {
+  padding: 8px 12px;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 12px 24px;
+  font-size: 1rem;
+}
+
+/* Form Controls */
+.form-control {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.form-input {
+  @include input;
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-primary {
+  color: var(--color-purple);
+}
+
+.text-success {
+  color: var(--color-green);
+}
+
+.text-danger {
+  color: var(--color-red);
+}
+
+.text-warning {
+  color: var(--color-orange);
+}
+
+.text-info {
+  color: var(--color-blue);
+}
+
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-5 { margin-top: 3rem; }
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.mb-5 { margin-bottom: 3rem; }
+
+.ml-1 { margin-left: 0.25rem; }
+.ml-2 { margin-left: 0.5rem; }
+.ml-3 { margin-left: 1rem; }
+.ml-4 { margin-left: 1.5rem; }
+.ml-5 { margin-left: 3rem; }
+
+.mr-1 { margin-right: 0.25rem; }
+.mr-2 { margin-right: 0.5rem; }
+.mr-3 { margin-right: 1rem; }
+.mr-4 { margin-right: 1.5rem; }
+.mr-5 { margin-right: 3rem; }
+
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 1rem; }
+.p-4 { padding: 1.5rem; }
+.p-5 { padding: 3rem; }
+
+.w-100 { width: 100%; }
+.h-100 { height: 100%; }
+
+// Status badges
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.badge-pending {
+  @include badge($color-orange);
+}
+
+.badge-approved {
+  @include badge($color-green);
+}
+
+.badge-rejected {
+  @include badge($color-red);
+}
+
+.badge-active {
+  @include badge($color-green);
+}
+
+.badge-inactive {
+  @include badge($color-orange);
+}
+
+.badge-suspended {
+  @include badge($color-red);
+}
+
+.badge-released {
+  @include badge($color-blue);
+} 

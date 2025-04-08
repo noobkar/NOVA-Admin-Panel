@@ -1,0 +1,218 @@
+@import '../../../styles/scss/variables';
+@import '../../../styles/scss/mixins';
+
+.users-page {
+  .users-card {
+    margin-bottom: 24px;
+  }
+
+  .card-actions {
+    display: flex;
+    gap: 16px;
+    
+    @include md {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  .search-form {
+    flex: 1;
+    
+    @include md {
+      width: 100%;
+    }
+  }
+
+  .search-input-wrapper {
+    position: relative;
+    
+    input {
+      @include input;
+      padding-right: 40px;
+    }
+    
+    button {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      
+      &:hover {
+        color: var(--color-purple);
+      }
+    }
+  }
+
+  .filter-controls {
+    display: flex;
+    gap: 12px;
+    
+    @include md {
+      width: 100%;
+    }
+    
+    @include sm {
+      flex-direction: column;
+    }
+  }
+
+  .filter-select {
+    @include input;
+    padding: 11px 16px;
+    cursor: pointer;
+    min-width: 150px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23696d85'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+    padding-right: 40px;
+    
+    @include md {
+      flex: 1;
+    }
+  }
+
+  .users-table {
+    @include table;
+    
+    th {
+      white-space: nowrap;
+    }
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .user-avatar-component {
+      flex-shrink: 0;
+    }
+
+    h4 {
+      font-size: 0.938rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    p {
+      font-size: 0.813rem;
+      color: var(--text-secondary);
+    }
+  }
+
+  .role-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    
+    &.admin {
+      background-color: rgba(115, 103, 240, 0.1);
+      color: var(--color-purple);
+    }
+    
+    &.user {
+      background-color: rgba(0, 207, 232, 0.1);
+      color: var(--color-blue);
+    }
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    
+    &.badge-active {
+      background-color: rgba(40, 199, 111, 0.15);
+      color: var(--color-green);
+    }
+    
+    &.badge-inactive {
+      background-color: rgba(255, 159, 67, 0.15);
+      color: var(--color-orange);
+    }
+    
+    &.badge-suspended {
+      background-color: rgba(234, 84, 85, 0.15);
+      color: var(--color-red);
+    }
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 32px 24px;
+    
+    i {
+      font-size: 24px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    
+    p {
+      color: var(--text-secondary);
+    }
+  }
+
+  .loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 0;
+    
+    i {
+      font-size: 24px;
+      color: var(--color-purple);
+      margin-bottom: 16px;
+    }
+    
+    p {
+      color: var(--text-secondary);
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+
+  .action-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--bg-ternary);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &.view:hover {
+      background-color: var(--color-blue);
+      color: white;
+    }
+
+    &.edit:hover {
+      background-color: var(--color-purple);
+      color: white;
+    }
+  }
+} 

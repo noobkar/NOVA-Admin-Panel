@@ -1,0 +1,33 @@
+@import '../../styles/scss/variables';
+@import '../../styles/scss/mixins';
+
+.theme-switcher {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1000;
+  display: flex;
+  background-color: var(--bg-secondary);
+  border-radius: 30px;
+  padding: 6px;
+  box-shadow: var(--shadow-medium);
+}
+
+.theme-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  
+  &.active {
+    background-color: var(--color-purple);
+    color: white;
+  }
+} 

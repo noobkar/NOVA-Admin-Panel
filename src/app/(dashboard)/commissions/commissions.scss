@@ -1,0 +1,244 @@
+@import '../../../styles/scss/variables';
+@import '../../../styles/scss/mixins';
+
+.commissions-page {
+  .filter-bar {
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+    @include md {
+      flex-direction: column;
+      gap: 20px;
+      align-items: stretch;
+    }
+  }
+  
+  .filter-section {
+    display: flex;
+    gap: 24px;
+    
+    @include md {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+  
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 180px;
+    
+    label {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+  }
+  
+  .filter-select {
+    @include input;
+    padding: 11px 16px;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23696d85'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+    padding-right: 40px;
+  }
+  
+  .date-inputs {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    
+    @include sm {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+  
+  .date-input {
+    @include input;
+    padding: 11px 16px;
+    min-width: 160px;
+    
+    @include sm {
+      width: 100%;
+    }
+  }
+  
+  .date-separator {
+    color: var(--text-secondary);
+    
+    @include sm {
+      display: none;
+    }
+  }
+  
+  .filter-actions {
+    display: flex;
+    gap: 12px;
+    
+    @include sm {
+      flex-direction: column;
+    }
+  }
+  
+  .commissions-card {
+    margin-bottom: 24px;
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .commissions-table {
+    @include table;
+    
+    th {
+      white-space: nowrap;
+    }
+  }
+  
+  .affiliate-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .affiliate-avatar {
+      flex-shrink: 0;
+    }
+
+    h4 {
+      font-size: 0.938rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    p {
+      font-size: 0.813rem;
+      color: var(--text-secondary);
+    }
+  }
+  
+  .referral-info {
+    display: flex;
+    flex-direction: column;
+    
+    .referral-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      
+      .referral-avatar {
+        flex-shrink: 0;
+      }
+      
+      div {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+    
+    .referral-name {
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+    
+    .referral-email {
+      font-size: 0.813rem;
+      color: var(--text-secondary);
+    }
+  }
+  
+  .commission-amount {
+    display: flex;
+    flex-direction: column;
+    
+    .amount {
+      font-weight: 600;
+      color: var(--color-green);
+    }
+    
+    .rate {
+      font-size: 0.813rem;
+      color: var(--text-secondary);
+    }
+  }
+  
+  .commission-source {
+    text-transform: capitalize;
+    font-size: 0.938rem;
+  }
+  
+  .no-results {
+    text-align: center;
+    padding: 32px 24px;
+    
+    i {
+      font-size: 24px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    
+    p {
+      color: var(--text-secondary);
+    }
+  }
+
+  .loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 0;
+    
+    i {
+      font-size: 24px;
+      color: var(--color-purple);
+      margin-bottom: 16px;
+    }
+    
+    p {
+      color: var(--text-secondary);
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  .action-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--bg-ternary);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &.view:hover {
+      background-color: var(--color-blue);
+      color: white;
+    }
+  }
+} 

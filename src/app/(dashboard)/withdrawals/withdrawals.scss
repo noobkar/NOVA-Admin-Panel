@@ -1,0 +1,356 @@
+@import '../../../styles/scss/variables';
+@import '../../../styles/scss/mixins';
+
+.withdrawals-page {
+  padding: 1.5rem;
+  
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-end;
+    
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      min-width: 180px;
+      
+      label {
+        font-size: 0.875rem;
+        margin-bottom: 0.25rem;
+        color: var(--text-secondary);
+      }
+      
+      select, input {
+        padding: 0.5rem;
+        border-radius: 4px;
+        border: 1px solid var(--border-color);
+        font-size: 0.875rem;
+        
+        &:focus {
+          outline: none;
+          border-color: var(--primary-color);
+        }
+      }
+    }
+    
+    .btn-refresh {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      
+      &:hover:not(:disabled) {
+        background-color: var(--bg-tertiary);
+      }
+      
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+  }
+  
+  .withdrawals-summary {
+    margin-bottom: 1rem;
+    
+    p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+  }
+  
+  .withdrawals-table-wrapper {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .withdrawals-table {
+    width: 100%;
+    border-collapse: collapse;
+    
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    th {
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      background-color: var(--bg-tertiary);
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
+    }
+    
+    tr:hover td {
+      background-color: var(--bg-tertiary);
+    }
+    
+    .id-column {
+      width: 80px;
+      font-weight: 600;
+    }
+    
+    .affiliate-column {
+      min-width: 220px;
+      
+      .affiliate-info {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        
+        .affiliate-avatar {
+          flex-shrink: 0;
+          border-radius: 50%;
+        }
+        
+        .affiliate-details {
+          min-width: 0;
+          
+          .affiliate-name {
+            margin: 0 0 0.25rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+          }
+          
+          .affiliate-email {
+            margin: 0;
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+    
+    .amount-column {
+      width: 120px;
+      
+      .amount {
+        font-weight: 600;
+        color: var(--text-success);
+      }
+    }
+    
+    .payment-method-column {
+      width: 140px;
+      
+      .payment-method {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.875rem;
+        
+        i {
+          font-size: 1rem;
+        }
+        
+        .fa-paypal {
+          color: #0070ba;
+        }
+        
+        .fa-university {
+          color: #6b7280;
+        }
+      }
+    }
+    
+    .status-column {
+      width: 100px;
+      
+      .status-badge {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        
+        &.pending {
+          background-color: var(--warning-bg);
+          color: var(--warning-color);
+        }
+        
+        &.approved {
+          background-color: var(--info-bg);
+          color: var(--info-color);
+        }
+        
+        &.completed {
+          background-color: var(--success-bg);
+          color: var(--success-color);
+        }
+        
+        &.rejected {
+          background-color: var(--danger-bg);
+          color: var(--danger-color);
+        }
+        
+        &.cancelled {
+          background-color: var(--bg-tertiary);
+          color: var(--text-secondary);
+        }
+      }
+    }
+    
+    .date-column {
+      width: 180px;
+      font-size: 0.875rem;
+    }
+    
+    .actions-column {
+      width: 100px;
+      text-align: center;
+      
+      .btn-view {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: 4px;
+        background-color: var(--primary-bg);
+        color: var(--primary-color);
+        border: 1px solid var(--primary-color-light);
+        font-size: 0.75rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        
+        &:hover {
+          background-color: var(--primary-color-light);
+          color: var(--primary-color-dark);
+        }
+      }
+    }
+  }
+  
+  .loading-state, .error-state, .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 1rem;
+    
+    i {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    
+    p {
+      margin: 0 0 1.5rem;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 400px;
+    }
+  }
+  
+  .loading-state {
+    i {
+      color: var(--primary-color);
+      animation: spin 1.5s linear infinite;
+    }
+    
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  }
+  
+  .error-state {
+    i {
+      color: var(--danger-color);
+    }
+    
+    .btn-retry {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      background-color: var(--danger-color);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background-color: var(--danger-color-dark);
+      }
+    }
+  }
+  
+  .empty-state {
+    i {
+      color: var(--text-tertiary);
+    }
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    
+    .btn-page {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      
+      &:hover:not(:disabled) {
+        background-color: var(--bg-tertiary);
+      }
+      
+      &.active {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+      }
+      
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .filter-bar {
+      flex-direction: column;
+      align-items: stretch;
+      
+      .filter-group {
+        width: 100%;
+      }
+    }
+    
+    .withdrawals-table {
+      .affiliate-column, .payment-method-column, .date-column {
+        display: none;
+      }
+    }
+  }
+} 
